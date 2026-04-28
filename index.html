@@ -152,7 +152,29 @@
             font-size: 1.2rem;
             color: var(--text-muted);
             max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* NOUVEAU STYLE POUR LE WARNING */
+        .warning-banner {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #fbbf24;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 0.95rem;
             margin: 0 auto 3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.1);
+            max-width: 90%;
+            text-align: left;
+        }
+
+        .warning-banner strong {
+            color: #fcd34d;
         }
 
         .simple-features {
@@ -206,6 +228,7 @@
         @media (max-width: 768px) {
             header h1 { font-size: 3.5rem; }
             .btn { padding: 12px 25px; font-size: 1rem; }
+            .warning-banner { flex-direction: column; text-align: center; border-radius: 20px; }
         }
     </style>
 </head>
@@ -223,13 +246,17 @@
         <h1>Narval <span>Music</span></h1>
         <p class="hero-sub">Ajoutez une qualité sonore sans compromis à votre serveur. Fluidité parfaite, contrôle intuitif, 100% intégré à l'écosystème Narval.</p>
         
+        <!-- MESSAGE D'AVERTISSEMENT -->
+        <div class="warning-banner">
+            <span style="font-size: 1.2rem;">⚠️</span>
+            <span><strong>En développement :</strong> Vous pouvez inviter Narval Music dès maintenant, mais le bot n'est pas encore prêt à 100%.</span>
+        </div>
+        
         <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
-            <!-- LIEN D'INVITATION DU BOT -->
             <a href="https://discord.com/oauth2/authorize?client_id=1457179396002545790&permissions=3147776&integration_type=0&scope=bot" target="_blank" rel="noopener noreferrer" class="btn">
                 Ajouter à Discord
             </a>
             
-            <!-- NOUVEAU LIEN DISCORD SUPPORT -->
             <a href="https://discord.gg/V9xtvkCCc" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
                 Serveur Support
             </a>
