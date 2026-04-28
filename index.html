@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narval Music | Ajouter le bot</title>
+    <style>
+        :root {
+            --bg-dark: #030712;
+            --color-primary: #00E5FF;
+            --color-secondary: #3B82F6;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --glass-bg: rgba(17, 24, 39, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --gradient-btn: linear-gradient(135deg, #3B82F6 0%, #00E5FF 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .ambient-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.5;
+            pointer-events: none;
+            animation: pulseGlow 8s infinite alternate;
+        }
+
+        .glow-1 {
+            top: -10%; left: -10%;
+            width: 50vw; height: 50vw;
+            background: rgba(59, 130, 246, 0.4);
+        }
+
+        .glow-2 {
+            bottom: 10%; right: -10%;
+            width: 60vw; height: 60vw;
+            background: rgba(0, 229, 255, 0.25);
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.3; }
+            100% { transform: scale(1.1) translate(5%, 5%); opacity: 0.6; }
+        }
+
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        h1, h2, h3 { font-weight: 800; letter-spacing: -1px; }
+
+        .btn {
+            background: var(--gradient-btn);
+            color: #fff;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 229, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 229, 255, 0.1);
+            box-shadow: none;
+        }
+
+        header {
+            padding: 12rem 5% 5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        header h1 {
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to bottom, #ffffff, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header h1 span {
+            color: var(--color-primary);
+            -webkit-text-fill-color: initial;
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Grille simplifiée pour les 3 avantages */
+        .simple-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem 5% 6rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .feature-box {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 229, 255, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box h3 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .feature-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer { 
+            text-align: center; 
+            padding: 3rem; 
+            border-top: 1px solid var(--glass-border); 
+            color: var(--text-muted); 
+            margin-top: auto; 
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 3.5rem; }
+            .btn { padding: 12px 25px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <nav>
+        <!-- On peut mettre un lien pour retourner vers le site principal de Narval Suite si besoin -->
+        <a href="#" class="logo">NARVAL SUITE</a>
+    </nav>
+
+    <header>
+        <div class="intro-text">Le module audio par excellence</div>
+        <h1>Narval <span>Music</span></h1>
+        <p class="hero-sub">Ajoutez une qualité sonore sans compromis à votre serveur. Fluidité parfaite, contrôle intuitif, 100% intégré à l'écosystème Narval.</p>
+        
+        <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+            <!-- TON LIEN D'INVITATION EXACT EST ICI -->
+            <a href="https://discord.com/oauth2/authorize?client_id=1457179396002545790&permissions=3147776&integration_type=0&scope=bot" target="_blank" rel="noopener noreferrer" class="btn">
+                Ajouter à Discord
+            </a>
+            
+            <!-- Lien vers le discord support de Narval si tu en as un -->
+            <a href="https://discord.gg/B3zTkkgu" class="btn btn-outline">
+                Serveur Support
+            </a>
+        </div>
+    </header>
+
+    <section class="simple-features">
+        <div class="feature-box">
+            <div class="feature-icon">🎧</div>
+            <h3>Audio Haute Fidélité</h3>
+            <p>Une restitution sonore parfaite, sans grésillement ni perte de qualité pour vos salons vocaux.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon">⚡</div>
+            <h3>Latence Zéro</h3>
+            <p>Hébergé sur notre infrastructure premium pour garantir un uptime constant et une fluidité absolue.</p>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-icon">🎛️</div>
+            <h3>Contrôle Total</h3>
+            <p>File d'attente intuitive, système de skip, et commandes slash (/) rapides pour gérer votre musique.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Narval Music &copy; 2024. Fait partie de Narval Suite.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.5;">Propulsé par la technologie Narval</p>
+    </footer>
+
+</body>
+</html>
