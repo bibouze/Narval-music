@@ -34,6 +34,7 @@
             min-height: 100vh;
         }
 
+        /* --- EFFETS DE LUMIÈRE (BACKGROUND) --- */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
@@ -61,6 +62,7 @@
             100% { transform: scale(1.1) translate(5%, 5%); opacity: 0.6; }
         }
 
+        /* --- NAVIGATION --- */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -84,6 +86,7 @@
 
         h1, h2, h3 { font-weight: 800; letter-spacing: -1px; }
 
+        /* --- BOUTONS --- */
         .btn {
             background: var(--gradient-btn);
             color: #fff;
@@ -98,6 +101,7 @@
             letter-spacing: 1px;
             transition: transform 0.2s, box-shadow 0.2s;
             display: inline-block;
+            text-align: center;
         }
 
         .btn:hover {
@@ -116,6 +120,13 @@
             box-shadow: none;
         }
 
+        .header-buttons {
+            display: flex; 
+            gap: 20px; 
+            justify-content: center;
+        }
+
+        /* --- HEADER & TEXTES --- */
         header {
             padding: 12rem 5% 5rem;
             text-align: center;
@@ -135,8 +146,9 @@
         }
 
         header h1 {
-            font-size: 5rem;
-            line-height: 1;
+            /* clamp permet au texte de grandir/rétrécir automatiquement selon l'écran */
+            font-size: clamp(3rem, 8vw, 5rem);
+            line-height: 1.1;
             margin-bottom: 1.5rem;
             background: linear-gradient(to bottom, #ffffff, #9ca3af);
             -webkit-background-clip: text;
@@ -155,7 +167,7 @@
             margin: 0 auto 2rem;
         }
 
-        /* NOUVEAU STYLE POUR LE WARNING */
+        /* --- BANNIÈRE WARNING --- */
         .warning-banner {
             background: rgba(245, 158, 11, 0.1);
             border: 1px solid rgba(245, 158, 11, 0.3);
@@ -177,6 +189,7 @@
             color: #fcd34d;
         }
 
+        /* --- GRILLE DES AVANTAGES --- */
         .simple-features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -219,16 +232,56 @@
 
         footer { 
             text-align: center; 
-            padding: 3rem; 
+            padding: 3rem 5%; 
             border-top: 1px solid var(--glass-border); 
             color: var(--text-muted); 
             margin-top: auto; 
         }
 
+
+        /* =========================================
+           ADAPTATION POUR TÉLÉPHONES (MOBILE)
+           ========================================= */
         @media (max-width: 768px) {
-            header h1 { font-size: 3.5rem; }
-            .btn { padding: 12px 25px; font-size: 1rem; }
-            .warning-banner { flex-direction: column; text-align: center; border-radius: 20px; }
+            /* On réduit l'espace vide en haut sur mobile */
+            header { padding: 7rem 5% 3rem; }
+            
+            .intro-text { font-size: 1rem; letter-spacing: 2px; }
+            .hero-sub { font-size: 1rem; margin-bottom: 1.5rem; }
+            
+            /* Le warning s'empile pour éviter de déborder */
+            .warning-banner {
+                flex-direction: column;
+                text-align: center;
+                border-radius: 20px;
+                padding: 15px;
+                font-size: 0.9rem;
+                margin-bottom: 2rem;
+            }
+
+            /* Les boutons se mettent l'un en dessous de l'autre et prennent 100% de la largeur */
+            .header-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 350px;
+                gap: 15px;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 14px 20px;
+                font-size: 1rem;
+            }
+
+            /* On ajuste les marges des cartes */
+            .simple-features {
+                gap: 1.5rem;
+                padding: 1rem 5% 4rem;
+            }
+
+            .feature-box {
+                padding: 2rem 1.5rem;
+            }
         }
     </style>
 </head>
@@ -238,7 +291,8 @@
     <div class="ambient-glow glow-2"></div>
 
     <nav>
-        <a href="#" class="logo">NARVAL SUITE</a>
+        <!-- Un clic sur le logo ramène vers ton site principal si besoin -->
+        <a href="https://bibouze.github.io/Narval-suite/" class="logo">NARVAL SUITE</a>
     </nav>
 
     <header>
@@ -252,7 +306,8 @@
             <span><strong>En développement :</strong> Vous pouvez inviter Narval Music dès maintenant, mais le bot n'est pas encore prêt à 100%.</span>
         </div>
         
-        <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+        <!-- BOUTONS -->
+        <div class="header-buttons">
             <a href="https://discord.com/oauth2/authorize?client_id=1457179396002545790&permissions=3147776&integration_type=0&scope=bot" target="_blank" rel="noopener noreferrer" class="btn">
                 Ajouter à Discord
             </a>
